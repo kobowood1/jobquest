@@ -61,13 +61,16 @@ select.chip[data-on="true"] { background-color: var(--sun); }
 /* drawer */
 .drawer { position: fixed; z-index: 6; top: calc(14px + env(safe-area-inset-top, 0px)); right: max(14px, env(safe-area-inset-right, 0px)); bottom: calc(14px + env(safe-area-inset-bottom, 0px));
   width: 380px; display: flex; flex-direction: column; background: var(--paper); border: 3px solid var(--line); border-radius: 22px; box-shadow: 7px 7px 0 var(--line);
-  animation: slide-in .6s .2s cubic-bezier(.3,1.4,.5,1) both; overflow: hidden; }
+  animation: slide-in .6s .2s cubic-bezier(.3,1.4,.5,1) backwards; overflow: hidden;
+  transition: transform .55s cubic-bezier(.4,1.35,.5,1), opacity .3s; }
+.panel-hidden .drawer { transform: translateX(calc(100% + 40px)) rotate(5deg); opacity: 0; pointer-events: none; }
 .drawer header { padding: 14px 16px 10px; border-bottom: 3px solid var(--line); background: var(--sun); position: relative; }
 .drawer .eyebrow { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); opacity: .75; }
 .drawer h2 { font-family: var(--display); font-weight: 400; font-size: 28px; margin: 2px 0 0; line-height: 1.05; letter-spacing: .02em; text-wrap: balance; }
 .drawer .meta { font-weight: 700; font-size: 14px; color: var(--ink); margin-top: 2px; }
 .drawer .meta b { font-variant-numeric: tabular-nums; }
-.back { position: absolute; top: 12px; right: 12px; font: 800 13px var(--body); border: 2.5px solid var(--line); background: var(--paper); border-radius: 999px; padding: 3px 10px 1px; cursor: pointer; box-shadow: 2px 2px 0 var(--line); transition: transform .15s cubic-bezier(.3,1.8,.5,1); }
+.drawer header { padding-right: 58px; }
+.back { position: absolute; top: 52px; right: 12px; font: 800 13px var(--body); border: 2.5px solid var(--line); background: var(--paper); border-radius: 999px; padding: 3px 10px 1px; cursor: pointer; box-shadow: 2px 2px 0 var(--line); transition: transform .15s cubic-bezier(.3,1.8,.5,1); }
 .back:hover { transform: rotate(4deg) scale(1.05); }
 .tabs { display: flex; gap: 6px; padding: 10px 16px 0; }
 .tab { font: 800 14px var(--body); border: 2.5px solid var(--line); border-bottom: 0; border-radius: 12px 12px 0 0; background: #f1ead8; padding: 4px 14px 2px; cursor: pointer; color: var(--ink); }
@@ -122,6 +125,22 @@ select.chip[data-on="true"] { background-color: var(--sun); }
 .job .note { font-size: 12.5px; font-weight: 600; color: var(--muted); flex: 1; min-width: 0; }
 .tag.pay { background: #ffe9a8; }
 
+
+/* hide / show panel */
+.collapse { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; border-radius: 50%; border: 2.5px solid var(--line); background: var(--paper); box-shadow: 2px 2px 0 var(--line);
+  display: grid; place-items: center; cursor: pointer; padding: 0; transition: transform .2s cubic-bezier(.3,1.8,.5,1); }
+.collapse:hover { transform: translateX(3px) rotate(-8deg) scale(1.08); }
+.collapse:active { transform: scale(.9); box-shadow: 0 0 0 var(--line); }
+.show-panel { position: fixed; z-index: 6; top: calc(14px + env(safe-area-inset-top, 0px)); right: max(14px, env(safe-area-inset-right, 0px));
+  display: inline-flex; align-items: center; gap: 6px; font: 400 18px var(--display); letter-spacing: .03em; color: var(--ink); background: var(--mode-col);
+  border: 3px solid var(--line); border-radius: 999px; padding: 7px 16px 3px 10px; box-shadow: 4px 4px 0 var(--line); cursor: pointer;
+  animation: tab-pop .5s .25s cubic-bezier(.3,1.7,.5,1) backwards; transition: transform .2s cubic-bezier(.3,1.8,.5,1); }
+.show-panel svg { margin-top: -3px; }
+.show-panel:hover { transform: translateX(-3px) rotate(-3deg) scale(1.05); }
+.show-panel:active { transform: translate(2px, 2px) scale(.95); box-shadow: 1px 1px 0 var(--line); }
+@keyframes tab-pop { from { transform: translateX(140%) rotate(12deg); } to { transform: none; } }
+.panel-hidden .filters { max-width: min(900px, calc(100vw - 200px)); }
+
 /* floating labels & tooltip */
 #labels { position: fixed; inset: 0; pointer-events: none; z-index: 3; }
 .lbl { position: absolute; left: 0; top: 0; transform-origin: 50% 100%; font: 800 13px var(--body); background: var(--paper); border: 2.5px solid var(--line); border-radius: 12px;
@@ -158,6 +177,8 @@ select.chip[data-on="true"] { background-color: var(--sun); }
   .filters::-webkit-scrollbar { display: none; }
   .chip, .search { flex: none; }
   .drawer { top: auto; left: max(10px, env(safe-area-inset-left, 0px)); right: max(10px, env(safe-area-inset-right, 0px)); width: auto; height: 44%; bottom: calc(10px + env(safe-area-inset-bottom, 0px)); animation-name: slide-up; }
+  .panel-hidden .drawer { transform: translateY(calc(100% + 40px)) rotate(-2deg); }
+  .show-panel { top: auto; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
   .hint { display: none; }
   .mode { font-size: 14px; padding: 7px 9px 3px; }
   .mode .n { display: none; }
@@ -197,13 +218,14 @@ select.chip[data-on="true"] { background-color: var(--sun); }
   </div>
 </div>
 
-<aside class="drawer" aria-live="polite">
+<aside class="drawer" id="panel" aria-live="polite">
   <header>
     <div class="eyebrow" id="d-eyebrow">The whole map</div>
     <h2 id="d-title">Where the internships are</h2>
     <div class="meta" id="d-meta"></div>
     <div class="mix" id="d-mix" aria-hidden="true"></div>
     <button class="back" id="d-back" hidden>Back to map</button>
+    <button class="collapse" id="hide-panel" aria-label="Hide the list panel" aria-controls="panel" aria-expanded="true" title="Hide panel"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3l5 5-5 5" fill="none" stroke="#1d2b53" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </header>
   <div class="tabs" id="tabs" role="tablist">
     <button class="tab" role="tab" id="tab-cities" aria-selected="true">Cities</button>
@@ -213,6 +235,7 @@ select.chip[data-on="true"] { background-color: var(--sun); }
   <div class="list" id="list"></div>
   <div class="foot" id="foot"></div>
 </aside>
+<button class="show-panel" id="show-panel" aria-controls="panel" hidden><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M11 3L6 8l5 5" fill="none" stroke="#1d2b53" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Show list</button>
 
 <div class="hint"><span>Drag to spin · scroll to zoom · click a pin</span><button class="fly" id="fly">Send the plane</button><button class="fly" id="toot">Toot the boat</button><span class="legend" id="legend"></span></div>
 
@@ -398,7 +421,24 @@ $('list').addEventListener('click', e => { const r = e.target.closest('.row'); i
 ['cities', 'states', 'new'].forEach(t => $('tab-' + t).onclick = () => { view = { kind: 'home', tab: t }; shown = 40; renderDrawer(true); });
 $('d-back').onclick = () => select({ kind: 'home', tab: view.prevTab || 'cities' });
 
-function select(v) { if (v.kind !== 'home') v.prevTab = view.kind === 'home' ? view.tab : view.prevTab; view = v; shown = 40; renderDrawer(true); focusCamera(v); }
+// ---------- hide / show the list panel ----------
+let panelHidden = false, onPanelToggle = null;
+try { panelHidden = localStorage.getItem('jqm-panel') === 'hidden'; } catch (e) {}
+function setPanel(hidden, focus) {
+  panelHidden = hidden;
+  document.documentElement.classList.toggle('panel-hidden', hidden);
+  $('panel').inert = hidden; $('show-panel').hidden = !hidden;
+  $('hide-panel').setAttribute('aria-expanded', String(!hidden));
+  try { localStorage.setItem('jqm-panel', hidden ? 'hidden' : 'shown'); } catch (e) {}
+  if (focus) (hidden ? $('show-panel') : $('hide-panel')).focus({ preventScroll: true });
+  if (onPanelToggle) onPanelToggle();
+}
+$('hide-panel').onclick = () => setPanel(true, true);
+$('show-panel').onclick = () => setPanel(false, true);
+addEventListener('keydown', e => { if (e.key === 'Escape' && !panelHidden && !e.target.closest('input, select')) setPanel(true, true); });
+setPanel(panelHidden);
+
+function select(v) { if (v.kind !== 'home' && panelHidden) setPanel(false); if (v.kind !== 'home') v.prevTab = view.kind === 'home' ? view.tab : view.prevTab; view = v; shown = 40; renderDrawer(true); focusCamera(v); }
 function refresh(drop) { applyFilters(); syncChips(); renderDrawer(true); updateScene(false, drop); }
 function setMode(k, fromHashChange) {
   if (!MODES[k]) return;
@@ -836,8 +876,14 @@ renderer.domElement.addEventListener('pointerup', ev => {
   select(h.kind === 'place' ? { kind: 'place', id: h.id } : h.kind === 'state' ? { kind: 'state', id: h.id } : { kind: 'remote' });
 });
 
+// the home view leaves room for the panel; with the panel hidden the map is centred on the whole screen
+function setHome() {
+  if (innerWidth < 860) { if (panelHidden) { HOME_POS.set(0, 1000, 640); HOME_T.set(-20, 0, 20); } else { HOME_POS.set(0, 1000, 760); HOME_T.set(-20, 0, 120); } }
+  else { const x = panelHidden ? 10 : 150; HOME_POS.set(x, 800, 720); HOME_T.set(x, 0, 30); }
+}
+onPanelToggle = () => { setHome(); if (view.kind === 'home') animateCam(HOME_POS.clone(), HOME_T.clone(), 900); };
 function resize() { const w = innerWidth, h = innerHeight; renderer.setSize(w, h); camera.aspect = w / h;
-  camera.position.copy(HOME_POS); if (w < 860) { HOME_POS.set(0, 1000, 760); HOME_T.set(-20, 0, 120); } camera.updateProjectionMatrix(); }
+  setHome(); camera.position.copy(HOME_POS); camera.updateProjectionMatrix(); }
 addEventListener('resize', () => { const w = innerWidth, h = innerHeight; renderer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix(); });
 resize();
 
