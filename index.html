@@ -678,6 +678,69 @@ function updateBoat(now, dt, t) {
   BT.puff += dt; if (BT.puff > .32) { BT.puff = 0; steamPuff(false); }
 }
 
+
+// ---------- toy sailboat ----------
+// A little sloop that tacks around the Gulf and up the Atlantic coast, crossing paths with the steamer. Forward is +z.
+const sailboat = new THREE.Group(); scene.add(sailboat);
+const S = (geo, mat, pos, rot, outline = .12) => part(geo, mat, pos, rot, outline, sailboat);
+const sbHull = footprint(2.4, 6.5, 2.5, 8);
+S(slab(sbHull, 1.8), toon('#fffaf0'), [0, .6, 0]);                                  // white hull
+S(slab(footprint(2.5, 6.6, 2.55, 8.2), .45), toon('#3a86ff'), [0, 1.35, .05], null, .08); // blue stripe
+S(slab(footprint(2.1, 6.1, 2.2, 7.4), .25), toon('#c98a4b'), [0, 1.65, 0], null, 0);       // teak deck
+S(new THREE.BoxGeometry(2.6, 1.1, 3.4), toon('#fffaf0'), [0, 2.3, -2.4]);            // little cabin
+S(new THREE.BoxGeometry(.25, .5, 2.6).translate(0, 0, 0), toon('#2a4a8f'), [1.32, 2.4, -2.4], null, 0);
+S(new THREE.BoxGeometry(.25, .5, 2.6), toon('#2a4a8f'), [-1.32, 2.4, -2.4], null, 0);
+S(new THREE.CylinderGeometry(.22, .26, 15, 8), toon('#c98a4b'), [0, 9.2, .6], null, .08);   // mast
+const sails = new THREE.Group(); sails.position.set(0, 0, .6); sailboat.add(sails);
+const boom = new THREE.Mesh(new THREE.CylinderGeometry(.18, .18, 7, 6).rotateX(Math.PI / 2), toon('#c98a4b')); boom.position.set(0, 2.6, -3.5); sails.add(boom);
+const sailTri = (pts, color) => { const sh = new THREE.Shape(); sh.moveTo(pts[0][0], pts[0][1]); pts.slice(1).forEach(q => sh.lineTo(q[0], q[1])); sh.closePath();
+  const g = new THREE.ShapeGeometry(sh, 8); g.rotateY(Math.PI / 2); // shape x -> -z (aft), shape y -> up
+  const m = new THREE.Mesh(g, toon(color, { side: THREE.DoubleSide })); m.castShadow = true; m.add(new THREE.LineSegments(new THREE.EdgesGeometry(g), edgeMat)); return m; };
+const main = sailTri([[0, 2.8], [7, 2.8], [0, 16]], '#fff3d6'); sails.add(main);
+const stripeSail = sailTri([[0, 6.2], [5.15, 6.2], [4.32, 7.8], [0, 7.8]], '#ff6b6b'); stripeSail.position.x = .06; sails.add(stripeSail);
+const stripeSail2 = stripeSail.clone(); stripeSail2.position.x = -.06; sails.add(stripeSail2);
+const jib = sailTri([[-6.6, 2.4], [0, 2.4], [0, 14]], '#fffaf0'); jib.position.z = 0; sailboat.add(jib); jib.position.set(0, 0, .6);
+const pennant = new THREE.Mesh(flagGeo, new THREE.MeshBasicMaterial({ color: '#ff6b6b', side: THREE.DoubleSide })); pennant.scale.setScalar(.7); pennant.position.set(0, 16.9, .6); sailboat.add(pennant);
+sailboat.scale.setScalar(2.4);
+sailboat.traverse(o => { if (o.isMesh) o.castShadow = true; });
+
+const sbRoute = new THREE.CatmullRomCurve3([
+  [-60, 372], [60, 318], [150, 296], [240, 318], [330, 352], [372, 250], [430, 150], [500, 40], [575, -40],
+  [615, 80], [590, 230], [470, 372], [250, 392], [80, 398]
+].map(([x, z]) => new THREE.Vector3(x, 0, z)), true, 'centripetal');
+const SB_LEN = sbRoute.getLength();
+const SB = { u: .15, speed: 19, foam: 0, spin: -1e9, heel: 0 };
+const sbTan = new THREE.Vector3(), sbPrev = { yaw: null };
+function bellSound() {
+  try {
+    audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+    const ctx = audioCtx, t0 = ctx.currentTime;
+    [[0, 1], [.32, .8]].forEach(([d, v]) => [[1320, .12], [1980, .05], [3300, .025]].forEach(([f, a]) => {
+      const o = ctx.createOscillator(), g = ctx.createGain(); o.type = 'sine'; o.frequency.value = f;
+      g.gain.setValueAtTime(0, t0 + d); g.gain.linearRampToValueAtTime(a * v, t0 + d + .005); g.gain.exponentialRampToValueAtTime(.0001, t0 + d + 1.4);
+      o.connect(g); g.connect(ctx.destination); o.start(t0 + d); o.stop(t0 + d + 1.5); }));
+  } catch (e) {}
+}
+function ringSailboat() { const now = performance.now(); if (now - SB.spin < 1600) return; SB.spin = now; bellSound(); }
+function updateSailboat(now, dt, t) {
+  if (!RM) SB.u = (SB.u + dt * SB.speed / SB_LEN) % 1;
+  sbRoute.getPointAt(SB.u, sailboat.position); sbRoute.getTangentAt(SB.u, sbTan);
+  const yaw = Math.atan2(sbTan.x, sbTan.z);
+  let dy = sbPrev.yaw == null ? 0 : yaw - sbPrev.yaw; if (dy > Math.PI) dy -= 2 * Math.PI; if (dy < -Math.PI) dy += 2 * Math.PI; sbPrev.yaw = yaw;
+  // heel away from the wind; lean a little more into turns
+  SB.heel += ((-.2 - dy / Math.max(dt, .001) * .8) - SB.heel) * .03;
+  const k = Math.min(1, (now - SB.spin) / 1500), spin = k < 1 ? ease(k) * Math.PI * 2 : 0;
+  sailboat.position.y = RM ? 0 : Math.sin(t * 2.1 + 1) * .8;
+  sailboat.rotation.set(RM ? 0 : Math.sin(t * 1.5) * .04, yaw + spin, RM ? -.15 : SB.heel + Math.sin(t * 1.9) * .05, 'YXZ');
+  if (RM) return;
+  sails.rotation.y = .35 + Math.sin(t * .7) * .06; main.scale.x = stripeSail.scale.x = stripeSail2.scale.x = 1 + Math.sin(t * 2.3) * .05; jib.rotation.y = -.25 + Math.sin(t * .9) * .05;
+  pennant.rotation.y = Math.PI + Math.sin(t * 6) * .25;
+  SB.foam += dt; if (SB.foam > .22) { SB.foam = 0;
+    const p = puffs[puffI++ % puffs.length]; p.life = 1; p.m.visible = true;
+    p.m.position.set((Math.random() - .5) * 1.5, 0, -6.5).applyMatrix4(sailboat.matrixWorld); p.m.position.y = .3;
+    p.s0 = 1.6; p.grow = 3.5; p.rise = 0; p.decay = 1.1; p.drift = null; p.m.scale.setScalar(p.s0); }
+}
+
 // labels for top places + remote
 const labelsEl = $('labels'); const LBL = [];
 for (let i = 0; i < 6; i++) { const d = document.createElement('div'); d.className = 'lbl'; labelsEl.appendChild(d); LBL.push({ el: d, ps: null }); }
@@ -732,6 +795,7 @@ function pick(ev) {
   ray.setFromCamera(mouse, camera);
   if (FL.on && ray.intersectObject(plane, true).length) return { kind: 'plane' };
   if (ray.intersectObject(boat, true).length) return { kind: 'boat' };
+  if (ray.intersectObject(sailboat, true).length) return { kind: 'sailboat' };
   const hp =ray.intersectObject(heads, false).find(h => PS[h.instanceId].t);
   if (hp) return { kind: 'place', ps: PS[hp.instanceId], id: PS[hp.instanceId].p.id };
   if (ray.intersectObject(bBody, false).length && remoteCount) return { kind: 'remote' };
@@ -749,6 +813,7 @@ renderer.domElement.addEventListener('pointermove', ev => {
     if (h.ps) h.ps.hov = 1; if (h.kind === 'state') stateMeshes[h.id].userData.lt = Math.max(stateMeshes[h.id].userData.lt, 4);
     if (h.kind === 'plane') { tip.innerHTML = `Toy biplane on patrol<small>Click for a barrel roll</small>`; }
     else if (h.kind === 'boat') { tip.innerHTML = `Toy steamboat on its rounds<small>Click to sound the whistle</small>`; }
+    else if (h.kind === 'sailboat') { tip.innerHTML = `Toy sailboat out for a cruise<small>Click to ring the bell</small>`; }
     else {
     const label = h.kind === 'place' ? PLACES[h.id].n : h.kind === 'state' ? stateNames[h.id] : 'Remote in the US';
     const n = h.kind === 'place' ? placeCount.get(h.id) : h.kind === 'state' ? stateCount[h.id] : remoteCount;
@@ -765,6 +830,7 @@ renderer.domElement.addEventListener('pointerup', ev => {
   const h = pick(ev); if (!h) return;
   if (h.kind === 'plane') { if (performance.now() - FL.rollT0 > 1300) FL.rollT0 = performance.now(); return; }
   if (h.kind === 'boat') { tootBoat(); return; }
+  if (h.kind === 'sailboat') { ringSailboat(); return; }
   if (h.ps) { h.ps.v += .5; }
   if (h.kind === 'state' && !stateCount[h.id]) return;
   select(h.kind === 'place' ? { kind: 'place', id: h.id } : h.kind === 'state' ? { kind: 'state', id: h.id } : { kind: 'remote' });
@@ -812,7 +878,7 @@ function frame(now) {
   balloon.scale.setScalar(Math.max(.001, bu.s)); balloon.position.y = RM ? 0 : Math.sin(t * 1.3) * 6; balloon.rotation.y = t * .2;
   if (!RM) { clouds.forEach(c => { c.position.x += c.userData.sp * dt; if (c.position.x > 950) c.position.x = -950; });
     waves.children.forEach(w => { w.position.y = Math.sin(t * 1.6 + w.userData.ph) * 1.2; w.scale.x = w.scale.y * (1 + Math.sin(t * 2 + w.userData.ph) * .08); }); }
-  updatePlane(now, dt); updateBoat(now, dt, t); updatePuffs(dt);
+  updatePlane(now, dt); updateBoat(now, dt, t); updateSailboat(now, dt, t); updatePuffs(dt);
   renderer.render(scene, camera);
   // labels
   const W = innerWidth, Hh = innerHeight; const placed = [];

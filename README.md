@@ -8,7 +8,7 @@ An interactive, cartoon-style 3D map of US tech jobs that runs in the browser wi
 | **Startup roles** | Full-time roles at venture-backed startups | Weekly startup jobs list by [@deaguiarza](https://x.com/deaguiarza) (`data/raw/startups-*.xlsx`) |
 | **H-1B sponsors** | US tech companies that regularly sponsor H-1B visas (employers, not specific openings) | Shared "100 Hidden US Sponsors" sheet (`data/raw/h1b-sponsors.psv`) |
 
-States rise by how many roles they hold, pins grow with each city's count and take the color of its most common category, and remote roles float in a hot-air balloon off the Pacific coast. A toy biplane flies over now and then (click it for a barrel roll) and a paddle steamer sails around the coast (click it to sound the whistle).
+States rise by how many roles they hold, pins grow with each city's count and take the color of its most common category, and remote roles float in a hot-air balloon off the Pacific coast. A toy biplane flies over now and then (click it for a barrel roll) a paddle steamer sails around the coast (click it to sound the whistle), and a little sailboat tacks around the Gulf and up the Atlantic (click it to ring the bell).
 
 The mode is kept in the URL hash, so `#internships`, `#startups` and `#h1b-sponsors` can be shared directly.
 
