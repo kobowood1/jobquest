@@ -179,6 +179,8 @@ select.chip[data-on="true"] { background-color: var(--sun); }
   .drawer { top: auto; left: max(10px, env(safe-area-inset-left, 0px)); right: max(10px, env(safe-area-inset-right, 0px)); width: auto; height: 44%; bottom: calc(10px + env(safe-area-inset-bottom, 0px)); animation-name: slide-up; }
   .panel-hidden .drawer { transform: translateY(calc(100% + 40px)) rotate(-2deg); }
   .show-panel { top: auto; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
+  .collapse svg { transform: rotate(90deg); }
+  .show-panel svg { transform: rotate(90deg); }
   .hint { display: none; }
   .mode { font-size: 14px; padding: 7px 9px 3px; }
   .mode .n { display: none; }

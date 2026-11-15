@@ -12,11 +12,16 @@ States rise by how many roles they hold, pins grow with each city's count and ta
 
 The mode is kept in the URL hash, so `#internships`, `#startups` and `#h1b-sponsors` can be shared directly.
 
-## Open it
+## Open it / deploy
 
-`index.html` is fully self-contained: the data is inlined and three.js loads from jsDelivr. Open it in a browser, or serve the repo with GitHub Pages (Settings → Pages → deploy from `main`, root).
+The site is one self-contained page, `public/index.html`: the data is inlined and three.js loads from jsDelivr. There is no server code.
+
+- **Locally:** open `public/index.html` in a browser, or run `npm run serve`.
+- **Vercel:** import the repo. `vercel.json` tells Vercel to skip the install and build steps and serve `public/` as is, so nothing needs configuring. Only `public/` is published; the raw data and scripts stay in the repo.
 
 ## Rebuild with fresh data
+
+The data is rebuilt on your machine, not on Vercel. Commit the new `public/index.html` and Vercel redeploys it.
 
 ```bash
 npm install
@@ -28,18 +33,19 @@ curl -L -o data/raw/listings.json \
 
 # 2. a new weekly startup spreadsheet: drop it in data/raw/ and point the "data" script at it in package.json
 
-# 3. build data/app-data.json and index.html
-npm run build
+# 3. rebuild data/app-data.json, public/index.html and build/artifact.html
+npm run build:local
 ```
 
 ## Layout
 
 ```
-index.html                 built, self-contained page
+public/index.html          built, self-contained page (what Vercel serves)
+vercel.json                static-site settings for Vercel
 src/template.html          page source (HTML, CSS, three.js scene); data is injected at __DATA__
 scripts/build-data.mjs     cleans and geocodes all three sources into data/app-data.json
 scripts/xlsx_to_json.py    converts the startup spreadsheet to JSON
-scripts/build-page.mjs     inlines the data into the template
+scripts/build-page.mjs     inlines the data into the template (full page, or --artifact fragment)
 data/raw/                  source files
 data/app-data.json         combined, geocoded dataset
 ```

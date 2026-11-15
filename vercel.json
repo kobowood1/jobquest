@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "echo 'Static site: nothing to install'",
+  "buildCommand": "echo 'Static site: public/index.html is prebuilt (run npm run build locally to refresh data)'",
+  "outputDirectory": "public"
+}
