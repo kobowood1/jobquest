@@ -1,0 +1,97 @@
+Company|Location|Industry|Visa Type|Freshers?|Min Exp|Tech Stack|Avg Base Salary|Careers Page|Relocation?|Tips
+Plaid|San Francisco, CA|Fintech / Financial APIs|H-1B, Green Card|Limited|1 yr|Go, React, TypeScript, AWS|$150k–$220k|https://plaid.com/careers/|Yes|Powers fintech data connections; steady H-1B filer.
+Brex|San Francisco, CA|Fintech / Corporate cards|H-1B|Limited|2 yrs|Elixir, Go, React, TypeScript|$150k–$220k|https://www.brex.com/careers|Yes|Corporate spend platform; eng-led, high comp.
+Ramp|New York, NY|Fintech / Spend mgmt|H-1B|Limited|2 yrs|TypeScript, React, Node.js, Go|$155k–$230k|https://ramp.com/careers|Yes|One of fastest-growing fintechs; NYC base.
+Marqeta|Oakland, CA|Fintech / Card issuing|H-1B|Limited|2 yrs|Java, Kotlin, AWS|$140k–$200k|https://www.marqeta.com/company/careers|Yes|Card-issuing infrastructure for fintechs.
+Affirm|San Francisco, CA|Fintech / BNPL|H-1B, Green Card|Limited|2 yrs|Rust, Python, Kotlin, React|$150k–$220k|https://www.affirm.com/careers|Yes|Buy-now-pay-later; remote-friendly, notable Rust shop.
+Chime|San Francisco, CA|Fintech / Neobank|H-1B|Limited|2 yrs|Go, Java, React, AWS|$145k–$210k|https://careers.chime.com|Yes|Consumer neobank; consistent H-1B sponsor.
+SoFi|San Francisco, CA|Fintech / Lending & banking|H-1B|Yes|0–2 yrs|Scala, Java, React|$130k–$190k|https://www.sofi.com/careers/|Yes|Has new-grad pipeline; lending + banking.
+BILL|San Jose, CA|Fintech / SMB payments|H-1B|Limited|2 yrs|Java, React, AWS|$130k–$185k|https://www.bill.com/careers|Yes|SMB accounts payable/receivable automation.
+Toast|Boston, MA|Restaurant fintech|H-1B|Limited|2 yrs|Java, Kotlin, React, Android|$130k–$190k|https://careers.toasttab.com|Yes|Restaurant POS + payments; Boston eng hub.
+Mercury|San Francisco, CA|Fintech / Banking for startups|H-1B|Limited|2 yrs|Haskell, TypeScript, React|$150k–$220k|https://mercury.com/jobs|Yes|Rare production Haskell shop; banking for startups.
+Modern Treasury|San Francisco, CA|Fintech / Payment ops|H-1B|Limited|2 yrs|Ruby, TypeScript, React|$150k–$210k|https://www.moderntreasury.com/careers|Yes|Payment operations infrastructure.
+Remitly|Seattle, WA|Fintech / Remittance|H-1B|Limited|2 yrs|Java, Kotlin, React, AWS|$130k–$190k|https://www.remitly.com/us/en/careers|Yes|Cross-border payments; immigrant-focused product.
+Upstart|San Mateo, CA|Fintech / AI lending|H-1B|Limited|2 yrs|Python, Scala, ML|$140k–$200k|https://www.upstart.com/careers|Yes|AI underwriting models; heavy ML hiring.
+Scale AI|San Francisco, CA|AI data platform|H-1B, O-1|Limited|2 yrs|Python, TypeScript, ML|$160k–$240k|https://scale.com/careers|Yes|Data engine for AI; sponsors top talent, high comp.
+Anyscale|San Francisco, CA|AI infra (Ray)|H-1B|Limited|2 yrs|Python, C++, Ray, Kubernetes|$160k–$230k|https://www.anyscale.com/careers|Yes|Creators of Ray; distributed AI compute.
+Weights & Biases|San Francisco, CA|MLOps / AI tooling|H-1B|Limited|2 yrs|Python, TypeScript, ML|$150k–$220k|https://wandb.ai/site/careers|Yes|ML experiment tracking; remote-friendly.
+Pinecone|New York, NY|Vector database / AI|H-1B|Limited|2 yrs|Rust, Python, Go|$160k–$230k|https://www.pinecone.io/careers/|Yes|Vector DB powering RAG / AI apps.
+dbt Labs|Philadelphia, PA|Data transformation|H-1B|Limited|2 yrs|Python, SQL, TypeScript|$140k–$200k|https://www.getdbt.com/careers|Yes|Remote-first; the dbt analytics standard.
+Fivetran|Oakland, CA|Data integration (ELT)|H-1B|Limited|2 yrs|Java, Scala, AWS|$140k–$200k|https://www.fivetran.com/careers|Yes|Automated data pipelines.
+DataRobot|Boston, MA|AutoML / Enterprise AI|H-1B|Limited|2 yrs|Python, ML, Kubernetes|$140k–$200k|https://www.datarobot.com/careers/|Yes|Enterprise AI / AutoML platform.
+Dataiku|New York, NY|Data science platform|H-1B|Limited|2 yrs|Python, Java, ML|$140k–$200k|https://www.dataiku.com/careers/|Yes|French-founded; large NYC engineering office.
+SambaNova Systems|Palo Alto, CA|AI chips / hardware|H-1B|Limited|2 yrs|C++, Python, ML systems|$150k–$220k|https://sambanova.ai/careers|Yes|AI hardware + systems; deep-tech hiring.
+Cerebras Systems|Sunnyvale, CA|AI chips / HPC|H-1B|Limited|2 yrs|C++, Python, HPC|$150k–$230k|https://www.cerebras.ai/careers|Yes|Wafer-scale AI processors.
+Groq|Mountain View, CA|AI inference chips|H-1B|Limited|2 yrs|C++, Python, Compilers|$150k–$230k|https://groq.com/careers/|Yes|LPU inference hardware; compiler-heavy roles.
+Tecton|San Francisco, CA|ML feature platform|H-1B|Limited|2 yrs|Python, Scala, AWS|$150k–$215k|https://www.tecton.ai/careers/|Yes|Feature store for production ML.
+Domino Data Lab|San Francisco, CA|Enterprise MLOps|H-1B|Limited|2 yrs|Scala, Python, Kubernetes|$140k–$200k|https://www.dominodatalab.com/careers|Yes|Enterprise data science platform.
+HashiCorp|San Francisco, CA|Cloud infra tooling|H-1B, Green Card|Limited|2 yrs|Go, Terraform, Kubernetes|$140k–$210k|https://www.hashicorp.com/careers|Yes|Terraform / Vault; remote-first, now part of IBM.
+Confluent|Mountain View, CA|Data streaming (Kafka)|H-1B, Green Card|Limited|2 yrs|Java, Scala, Kafka|$150k–$220k|https://www.confluent.io/careers/|Yes|The Kafka company; strong distributed-systems hiring.
+Cockroach Labs|New York, NY|Distributed SQL database|H-1B|Limited|2 yrs|Go, C++, Distributed systems|$150k–$220k|https://www.cockroachlabs.com/careers/|Yes|CockroachDB; serious systems engineering.
+SingleStore|San Francisco, CA|Real-time database|H-1B|Limited|2 yrs|C++, Go, SQL|$140k–$200k|https://www.singlestore.com/careers/|Yes|Real-time analytics DB; big India team too.
+Yugabyte|Sunnyvale, CA|Distributed database|H-1B|Limited|2 yrs|C++, Java, Go|$140k–$200k|https://www.yugabyte.com/careers/|Yes|YugabyteDB; Postgres-compatible distributed SQL.
+Redis|Mountain View, CA|In-memory database|H-1B|Limited|2 yrs|C, Go, Java|$140k–$200k|https://redis.io/careers/|Yes|Powers caching everywhere; core + cloud roles.
+Sourcegraph|San Francisco, CA|Code search / AI dev tools|H-1B|Limited|2 yrs|Go, TypeScript|$150k–$220k|https://about.sourcegraph.com/careers|Yes|Remote-first; code search + AI coding (Cody).
+Postman|San Francisco, CA|API platform|H-1B|Limited|2 yrs|Node.js, React, Go|$140k–$200k|https://www.postman.com/company/careers/|Yes|API tooling used by millions; large Bangalore office.
+Kong|San Francisco, CA|API gateway / infra|H-1B|Limited|2 yrs|Lua, Go, Rust|$140k–$200k|https://konghq.com/careers|Yes|API gateway + service connectivity.
+Temporal|Seattle, WA|Workflow orchestration|H-1B|Limited|2 yrs|Go, Java, Distributed systems|$150k–$220k|https://temporal.io/careers|Yes|Durable execution engine; hot infra startup.
+Vercel|San Francisco, CA|Frontend cloud (Next.js)|H-1B|Limited|2 yrs|TypeScript, React, Next.js|$150k–$220k|https://vercel.com/careers|Yes|Makers of Next.js; remote-first.
+Netlify|San Francisco, CA|Web dev platform|H-1B|Limited|2 yrs|JavaScript, Go|$140k–$200k|https://www.netlify.com/careers/|Yes|Jamstack hosting + edge functions.
+Grafana Labs|New York, NY|Observability|H-1B|Limited|2 yrs|Go, TypeScript|$140k–$200k|https://grafana.com/about/careers/|Yes|Remote-first; Grafana / Loki / Prometheus ecosystem.
+Chronosphere|New York, NY|Cloud-native observability|H-1B|Limited|2 yrs|Go, Kubernetes|$150k–$215k|https://chronosphere.io/careers/|Yes|Monitoring for cloud-native scale.
+Honeycomb|San Francisco, CA|Observability|H-1B|Limited|2 yrs|Go, TypeScript|$145k–$205k|https://www.honeycomb.io/careers|Yes|Remote-first; high-cardinality observability.
+JFrog|Sunnyvale, CA|DevOps / artifact mgmt|H-1B|Limited|2 yrs|Java, Go|$130k–$190k|https://jfrog.com/careers/|Yes|Artifactory; software supply chain.
+Harness|San Francisco, CA|CI/CD platform|H-1B|Limited|2 yrs|Java, Go, React|$140k–$200k|https://www.harness.io/company/careers|Yes|Software delivery platform; big India eng.
+Replit|San Francisco, CA|Cloud IDE / AI coding|H-1B|Limited|2 yrs|TypeScript, Go, AI|$150k–$220k|https://replit.com/careers|Yes|Browser IDE + AI agent (Replit Agent).
+SentinelOne|Mountain View, CA|Cybersecurity / endpoint|H-1B|Limited|2 yrs|Go, C++, ML|$140k–$200k|https://www.sentinelone.com/careers/|Yes|AI endpoint security.
+Zscaler|San Jose, CA|Cloud security (SASE)|H-1B, Green Card|Limited|2 yrs|Go, C++, Cloud|$130k–$190k|https://www.zscaler.com/careers|Yes|Consistent high-volume H-1B sponsor; large India team.
+Snyk|Boston, MA|Developer security|H-1B|Limited|2 yrs|Node.js, Go, TypeScript|$140k–$200k|https://snyk.io/careers/|Yes|Security for developers (SCA / SAST).
+Wiz|New York, NY|Cloud security|H-1B|Limited|2 yrs|Go, Python, Cloud|$160k–$240k|https://www.wiz.io/careers|Yes|Fastest-growing security co; big US engineering.
+Netskope|Santa Clara, CA|Cloud security (SASE)|H-1B|Limited|2 yrs|Go, C++, Cloud|$135k–$195k|https://www.netskope.com/company/careers|Yes|SASE / SSE platform.
+Abnormal Security|San Francisco, CA|Email security / AI|H-1B|Limited|2 yrs|Python, ML, Go|$150k–$215k|https://abnormalsecurity.com/careers|Yes|AI-native email security.
+Arctic Wolf|Eden Prairie, MN|Cybersecurity (SOC)|H-1B|Limited|2 yrs|Java, Go, Cloud|$120k–$175k|https://arcticwolf.com/careers/|Yes|Managed detection & response; Midwest base.
+Sysdig|San Francisco, CA|Container security|H-1B|Limited|2 yrs|Go, C++, Kubernetes|$140k–$200k|https://sysdig.com/careers/|Yes|Cloud-native + Falco security.
+Illumio|Sunnyvale, CA|Zero-trust segmentation|H-1B|Limited|2 yrs|Java, Go|$135k–$195k|https://www.illumio.com/company/careers|Yes|Microsegmentation security.
+Tanium|Kirkland, WA|Endpoint management|H-1B|Limited|2 yrs|C++, C#, Go|$135k–$195k|https://www.tanium.com/careers/|Yes|Real-time endpoint platform.
+Sumo Logic|Redwood City, CA|Log analytics / security|H-1B|Limited|2 yrs|Scala, Java, AWS|$130k–$185k|https://www.sumologic.com/careers/|Yes|Cloud log analytics + SIEM.
+HubSpot|Cambridge, MA|Marketing / CRM SaaS|H-1B|Yes|0–2 yrs|Java, React, MySQL|$130k–$185k|https://www.hubspot.com/careers|Yes|Strong new-grad program; sponsors regularly.
+Twilio|San Francisco, CA|Communications APIs|H-1B, Green Card|Limited|2 yrs|Go, Java, JavaScript|$140k–$200k|https://www.twilio.com/en-us/company/jobs|Yes|CPaaS; remote-first culture.
+Okta|San Francisco, CA|Identity / SSO|H-1B, Green Card|Limited|2 yrs|Java, Go, React|$140k–$200k|https://www.okta.com/company/careers/|Yes|Identity platform; steady sponsor.
+Asana|San Francisco, CA|Work management SaaS|H-1B|Limited|2 yrs|TypeScript, Python, React|$140k–$200k|https://asana.com/jobs|Yes|Productivity software; eng-driven.
+Box|Redwood City, CA|Cloud content mgmt|H-1B|Limited|2 yrs|Java, JavaScript|$130k–$185k|https://www.box.com/careers|Yes|Enterprise content cloud.
+Zendesk|San Francisco, CA|Customer service SaaS|H-1B|Limited|2 yrs|Ruby, Go, React|$130k–$185k|https://www.zendesk.com/jobs/|Yes|Support / CX software.
+Pegasystems|Cambridge, MA|Low-code / BPM|H-1B, Green Card|Yes|0–2 yrs|Java, React|$115k–$170k|https://www.pega.com/about/careers|Yes|Large H-1B sponsor; hires new grads into Pega platform.
+Anaplan|Miami, FL|Planning / EPM SaaS|H-1B|Limited|2 yrs|Java, Scala|$125k–$180k|https://www.anaplan.com/careers/|Yes|Connected planning platform.
+Coupa|San Mateo, CA|Spend management SaaS|H-1B|Limited|2 yrs|Java, Ruby|$120k–$175k|https://www.coupa.com/company/careers/|Yes|Business spend management.
+Smartsheet|Bellevue, WA|Work management SaaS|H-1B|Limited|2 yrs|Java, React|$125k–$180k|https://www.smartsheet.com/careers|Yes|Collaborative work platform.
+Samsara|San Francisco, CA|IoT / connected ops|H-1B|Limited|2 yrs|Go, TypeScript, C++|$140k–$200k|https://www.samsara.com/company/careers/|Yes|Fleet / IoT; hardware + cloud.
+Gong|San Francisco, CA|Revenue intelligence / AI|H-1B|Limited|2 yrs|Java, Scala, ML|$140k–$200k|https://www.gong.io/careers/|Yes|Conversation AI for sales.
+Braze|New York, NY|Customer engagement|H-1B|Limited|2 yrs|Ruby, Java, React|$135k–$195k|https://www.braze.com/careers|Yes|Marketing engagement platform.
+Sprinklr|New York, NY|Customer experience SaaS|H-1B|Limited|2 yrs|Java, React|$120k–$175k|https://www.sprinklr.com/careers/|Yes|Unified CXM; large India eng base.
+UiPath|New York, NY|RPA / automation|H-1B|Limited|2 yrs|C#, .NET, ML|$130k–$185k|https://www.uipath.com/company/careers|Yes|Robotic process automation + AI.
+Workato|Mountain View, CA|Integration / automation|H-1B|Limited|2 yrs|Ruby, Java|$130k–$190k|https://www.workato.com/careers|Yes|Enterprise iPaaS.
+Freshworks|San Mateo, CA|CRM / IT SaaS|H-1B|Limited|2 yrs|Ruby, Java, React|$120k–$175k|https://www.freshworks.com/company/careers/|Yes|Indian-founded, US-listed; sponsors from US offices.
+ServiceTitan|Glendale, CA|Vertical SaaS (trades)|H-1B|Limited|2 yrs|C#, .NET, React|$130k–$185k|https://www.servicetitan.com/careers|Yes|Software for home-services businesses.
+Procore|Carpinteria, CA|Construction SaaS|H-1B|Limited|2 yrs|Ruby, React, Go|$125k–$180k|https://www.procore.com/careers|Yes|Construction management platform.
+Tempus AI|Chicago, IL|Healthtech / AI|H-1B|Limited|2 yrs|Python, ML, Scala|$130k–$190k|https://www.tempus.com/about-us/careers/|Yes|Precision-medicine data + AI; Midwest hub.
+Benchling|San Francisco, CA|Biotech R&D software|H-1B|Limited|2 yrs|Python, React, TypeScript|$145k–$205k|https://www.benchling.com/careers|Yes|Life-sciences R&D cloud.
+Komodo Health|San Francisco, CA|Healthcare data|H-1B|Limited|2 yrs|Python, Scala, ML|$135k–$195k|https://www.komodohealth.com/careers|Yes|Healthcare 'map' data platform.
+Cedar|New York, NY|Healthcare fintech|H-1B|Limited|2 yrs|TypeScript, Python, React|$135k–$195k|https://www.cedar.com/careers/|Yes|Patient billing & payments.
+Included Health|San Francisco, CA|Digital health|H-1B|Limited|2 yrs|Go, Python, React|$135k–$195k|https://includedhealth.com/careers/|Yes|Care navigation + virtual care.
+Oscar Health|New York, NY|Health insurance tech|H-1B|Limited|2 yrs|Python, Go, React|$130k–$190k|https://www.hioscar.com/careers|Yes|Tech-first health insurer.
+Recursion|Salt Lake City, UT|TechBio / AI drug discovery|H-1B|Limited|2 yrs|Python, ML, GPU|$130k–$190k|https://www.recursion.com/careers|Yes|AI + biology drug discovery.
+Flexport|San Francisco, CA|Logistics tech|H-1B|Limited|2 yrs|Ruby, React, Go|$140k–$200k|https://www.flexport.com/careers/|Yes|Digital freight forwarding.
+project44|Chicago, IL|Supply-chain visibility|H-1B|Limited|2 yrs|Java, Kotlin, React|$120k–$175k|https://www.project44.com/careers|Yes|Real-time logistics visibility; Midwest.
+Motive|San Francisco, CA|Fleet / trucking tech|H-1B|Limited|2 yrs|Go, React, ML|$130k–$190k|https://gomotive.com/careers/|Yes|Formerly KeepTruckin; connected fleet ops.
+Nuro|Mountain View, CA|Autonomous delivery|H-1B|Limited|2 yrs|C++, Python, Robotics|$150k–$220k|https://www.nuro.ai/careers|Yes|Self-driving delivery robotics.
+Aurora|Pittsburgh, PA|Self-driving trucks|H-1B|Limited|2 yrs|C++, Python, ML|$150k–$220k|https://aurora.tech/careers|Yes|Autonomous trucking; Pittsburgh AV scene.
+Rivian|Irvine, CA|EV / automotive tech|H-1B|Limited|2 yrs|C++, Python, Embedded|$130k–$190k|https://careers.rivian.com|Yes|EV maker; software-defined vehicles.
+Lucid Motors|Newark, CA|EV / automotive tech|H-1B|Limited|2 yrs|C++, Embedded, Python|$130k–$190k|https://careers.lucidmotors.com|Yes|Luxury EV; powertrain + software.
+Faire|San Francisco, CA|B2B wholesale marketplace|H-1B|Limited|2 yrs|Java, Kotlin, React|$140k–$200k|https://www.faire.com/careers|Yes|Marketplace connecting brands + retailers.
+Gopuff|Philadelphia, PA|Instant commerce|H-1B|Limited|2 yrs|Go, React, AWS|$125k–$180k|https://careers.gopuff.com|Yes|Quick-commerce delivery; East-coast HQ.
+Wayfair|Boston, MA|E-commerce|H-1B|Yes|0–2 yrs|Java, Python, React|$120k–$175k|https://www.aboutwayfair.com/careers|Yes|Hires new grads; large Boston eng org.
+Carvana|Tempe, AZ|Auto e-commerce|H-1B|Limited|2 yrs|Java, React, AWS|$120k–$175k|https://www.carvana.com/careers|Yes|Online used-car retailer; Arizona base.
+Opendoor|San Francisco, CA|Proptech / iBuying|H-1B|Limited|2 yrs|Python, React, Go|$130k–$190k|https://www.opendoor.com/careers|Yes|Instant home buying / selling.
+Compass|New York, NY|Real estate tech|H-1B|Limited|2 yrs|TypeScript, React, Go|$130k–$185k|https://www.compass.com/careers/|Yes|Real estate brokerage platform.
+Coupang|Seattle, WA|E-commerce (US eng hubs)|H-1B|Limited|2 yrs|Java, Scala, AWS|$140k–$200k|https://www.coupang.jobs|Yes|'Korea's Amazon'; US engineering offices sponsor.
+Nextdoor|San Francisco, CA|Social / local network|H-1B|Limited|2 yrs|Python, React, Go|$135k–$195k|https://about.nextdoor.com/careers/|Yes|Neighborhood social network.
