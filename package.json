@@ -1,0 +1,20 @@
+{
+  "name": "jobquest",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Job Quest Map: an interactive cartoon 3D map of US internships, startup roles and H-1B sponsors",
+  "type": "module",
+  "scripts": {
+    "data": "python3 scripts/xlsx_to_json.py data/raw/startups-2026-10-26.xlsx data/raw/startups.json && node scripts/build-data.mjs data/raw/listings.json data/raw/startups.json data/raw/h1b-sponsors.psv data/app-data.json",
+    "page": "node scripts/build-page.mjs src/template.html data/app-data.json public/index.html",
+    "page:artifact": "node scripts/build-page.mjs src/template.html data/app-data.json build/artifact.html --artifact",
+    "build:local": "npm run data && npm run page && npm run page:artifact",
+    "serve": "npx --yes serve public"
+  },
+  "dependencies": {
+    "all-the-cities": "3.1.0",
+    "d3-geo": "^3.1.0",
+    "topojson-client": "^3.1.0",
+    "us-atlas": "^3.0.1"
+  }
+}
